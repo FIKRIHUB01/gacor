@@ -3,63 +3,215 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trio Gacor</title>
+    <title>Trio Gacor | Neobrutalism</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&family=Poppins:wght@400;600;800&display=swap');
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
-        body { background-color: #0f172a; color: #f8fafc; line-height: 1.6; overflow-x: hidden; }
-        .glow-bg { position: fixed; top: -50%; left: -50%; width: 200vw; height: 200vh; background: radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.05), transparent 60%); z-index: -1; pointer-events: none; }
-        header { position: fixed; top: 0; width: 100%; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); z-index: 1000; }
-        nav { max-width: 1200px; margin: 0 auto; padding: 1.2rem 2rem; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.5rem; font-weight: 800; color: #fff; text-decoration: none; letter-spacing: 1px; }
-        .logo span { color: #38bdf8; }
-        .nav-links { list-style: none; display: flex; gap: 2rem; }
-        .nav-links a { text-decoration: none; color: #cbd5e1; font-weight: 600; font-size: 0.95rem; transition: color 0.3s; }
-        .nav-links a:hover { color: #38bdf8; }
-        main { max-width: 1200px; margin: 6rem auto 2rem; padding: 0 2rem; }
-        section { margin-bottom: 6rem; padding-top: 2rem; }
-        h2.section-title { font-size: 2.5rem; font-weight: 800; text-align: center; margin-bottom: 3rem; background: linear-gradient(to right, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero { display: flex; flex-direction: column; align-items: center; text-align: center; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 24px; padding: 4rem 2rem; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
-        .hero-img { max-width: 800px; width: 100%; border-radius: 16px; margin-bottom: 2rem; border: 2px solid rgba(255, 255, 255, 0.1); }
-        .hero-text { max-width: 700px; font-size: 1.1rem; color: #94a3b8; }
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
-        .gallery-item { position: relative; border-radius: 16px; overflow: hidden; aspect-ratio: 4/3; border: 1px solid rgba(255, 255, 255, 0.05); }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-        .gallery-item:hover img { transform: scale(1.08); }
-        .gallery-overlay { position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); padding: 2rem 1rem 1rem; transform: translateY(100%); transition: transform 0.4s ease; }
-        .gallery-item:hover .gallery-overlay { transform: translateY(0); }
-        .gallery-overlay p { margin: 0; font-weight: 600; font-size: 1rem; color: #fff; }
-        .profile-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; }
-        .card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 20px; width: 320px; padding: 2.5rem 1.5rem; text-align: center; transition: transform 0.3s; }
-        .card:hover { transform: translateY(-10px); background: rgba(255, 255, 255, 0.05); border-color: rgba(56, 189, 248, 0.3); }
+        :root {
+            --bg: #FDFFB6; /* Kuning pucat khas brutalis */
+            --primary: #A0C4FF; /* Biru muda */
+            --secondary: #FFADAD; /* Merah muda */
+            --accent: #CAFFBF; /* Hijau muda */
+            --wa-green: #25D366; /* Hijau WhatsApp */
+            --black: #000000;
+            --border: 4px solid #000000;
+            --shadow: 8px 8px 0px #000000;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Space Grotesk', sans-serif; scroll-behavior: smooth; }
         
-        /* Tambahan efek hover khusus untuk foto profil agar terlihat bisa diklik */
-        .profile-link { display: inline-block; transition: transform 0.3s; }
-        .profile-link:hover { transform: scale(1.1); }
+        body { 
+            background-color: var(--bg); 
+            color: var(--black); 
+            line-height: 1.6; 
+            padding-top: 80px;
+        }
+
+        /* HEADER & NAV */
+        header { 
+            position: fixed; 
+            top: 20px; 
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%; 
+            max-width: 1100px;
+            background: #fff; 
+            border: var(--border); 
+            box-shadow: 6px 6px 0px var(--black);
+            z-index: 1000; 
+        }
+
+        nav { padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
         
-        .card img { width: 120px; height: 120px; border-radius: 50%; margin-bottom: 1.5rem; border: 3px solid #1e293b; object-fit: cover; cursor: pointer; }
-        .card h3 { font-size: 1.5rem; margin-bottom: 0.5rem; color: #f8fafc; }
-        .tag { display: inline-block; padding: 4px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-bottom: 1rem; }
-        .tag.fikri { background: rgba(56, 189, 248, 0.1); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.2); }
-        .tag.jey { background: rgba(244, 63, 94, 0.1); color: #f43f5e; border: 1px solid rgba(244, 63, 94, 0.2); }
-        .tag.nico { background: rgba(250, 204, 21, 0.1); color: #facc15; border: 1px solid rgba(250, 204, 21, 0.2); }
-        .card p { font-size: 0.9rem; color: #94a3b8; }
-        footer { text-align: center; padding: 3rem 1rem; background: #0b1120; border-top: 1px solid rgba(255, 255, 255, 0.05); margin-top: auto; }
-        .footer-text { font-size: 1.1rem; font-weight: 800; color: #475569; letter-spacing: 2px; text-transform: uppercase; }
-        .footer-text span { color: #38bdf8; }
-        @media (max-width: 768px) { .nav-links { display: none; } }
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--black); text-decoration: none; text-transform: uppercase; letter-spacing: -1px; }
+        .logo span { background: var(--primary); padding: 0 5px; border: 2px solid var(--black); }
+
+        .nav-links { list-style: none; display: flex; gap: 1.5rem; }
+        .nav-links a { 
+            text-decoration: none; 
+            color: var(--black); 
+            font-weight: 700; 
+            font-size: 0.95rem; 
+            padding: 5px 10px;
+            border: 2px solid transparent;
+        }
+        .nav-links a:hover { background: var(--secondary); border: 2px solid var(--black); }
+
+        main { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
+        section { margin-bottom: 5rem; }
+
+        h2.section-title { 
+            display: inline-block;
+            font-size: 2.5rem; 
+            font-weight: 800; 
+            background: var(--accent);
+            padding: 0.5rem 2rem;
+            border: var(--border);
+            box-shadow: 6px 6px 0px var(--black);
+            margin-bottom: 3rem; 
+            transform: rotate(-1deg);
+        }
+
+        /* HERO SECTION */
+        .hero { 
+            background: #fff; 
+            border: var(--border); 
+            padding: 3rem 2rem; 
+            box-shadow: 12px 12px 0px var(--black); 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .hero-img { 
+            max-width: 100%; 
+            border: var(--border); 
+            box-shadow: 8px 8px 0px var(--black);
+            margin-bottom: 2rem; 
+        }
+        .hero-text { 
+            max-width: 700px; 
+            font-size: 1.2rem; 
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* GALLERY SECTION */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 2rem; }
+        .gallery-item { 
+            background: #fff;
+            border: var(--border); 
+            padding: 10px;
+            box-shadow: 6px 6px 0px var(--black);
+            transition: 0.2s;
+        }
+        .gallery-item:hover { transform: translate(-4px, -4px); box-shadow: 10px 10px 0px var(--black); }
+        .gallery-item img { width: 100%; aspect-ratio: 1; object-fit: cover; border: 2px solid var(--black); }
+        .gallery-item p { padding: 10px 0; font-weight: 800; text-align: center; text-transform: uppercase; }
+
+        /* PROFILE CARDS */
+        .profile-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 2.5rem; }
+        .card { 
+            background: #fff; 
+            border: var(--border); 
+            width: 300px; 
+            padding: 2rem 1.5rem; 
+            text-align: center; 
+            box-shadow: 10px 10px 0px var(--black);
+            transition: 0.2s;
+        }
+        .card:hover { transform: translate(-5px, -5px); box-shadow: 15px 15px 0px var(--black); }
+        
+        .card img { 
+            width: 140px; height: 140px; 
+            border: var(--border); 
+            margin-bottom: 1.5rem; 
+            object-fit: cover; 
+        }
+
+        .tag { 
+            display: inline-block; 
+            padding: 5px 15px; 
+            font-weight: 800; 
+            margin-bottom: 1rem; 
+            border: 2px solid var(--black);
+            text-transform: uppercase;
+            font-size: 0.75rem;
+        }
+        .tag.fikri { background: var(--primary); }
+        .tag.jey { background: var(--secondary); }
+        .tag.nico { background: var(--accent); }
+
+        .card h3 { font-size: 1.8rem; font-weight: 800; margin-bottom: 0.5rem; text-transform: uppercase; }
+        .card p { font-weight: 500; color: #333; }
+
+        /* WHATSAPP SECTION */
+        .wa-section {
+            background: var(--wa-green);
+            border: var(--border);
+            padding: 4rem 2rem;
+            text-align: center;
+            box-shadow: 12px 12px 0px var(--black);
+            margin-top: 2rem;
+        }
+        .wa-section h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+        .wa-section p {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 2.5rem;
+        }
+        .wa-btn {
+            display: inline-block;
+            background: #fff;
+            color: var(--black);
+            text-decoration: none;
+            padding: 1.2rem 2.5rem;
+            font-weight: 800;
+            font-size: 1.3rem;
+            border: var(--border);
+            box-shadow: 8px 8px 0px var(--black);
+            transition: 0.2s;
+            text-transform: uppercase;
+        }
+        .wa-btn:hover {
+            transform: translate(-5px, -5px);
+            box-shadow: 13px 13px 0px var(--black);
+            background: var(--primary);
+        }
+
+        /* FOOTER */
+        footer { 
+            text-align: center; 
+            padding: 3rem; 
+            background: var(--black); 
+            color: #fff;
+            margin-top: 4rem; 
+        }
+        .footer-text { font-size: 1.2rem; font-weight: 800; text-transform: uppercase; }
+        .footer-text span { color: var(--primary); }
+
+        @media (max-width: 768px) { 
+            .nav-links { display: none; }
+            h2.section-title { font-size: 1.8rem; }
+            .wa-section h2 { font-size: 1.8rem; }
+        }
     </style>
 </head>
 <body>
-    <div class="glow-bg"></div>
+
     <header>
         <nav>
-            <a href="index.html" class="logo">TRIO <span>GACOR</span></a>
+            <a href="#" class="logo">TRIO <span>GACOR</span></a>
             <ul class="nav-links">
                 <li><a href="#beranda">Beranda</a></li>
                 <li><a href="#galeri">Galeri</a></li>
                 <li><a href="#profil">Profil</a></li>
+                <li><a href="#saluran">Saluran</a></li>
             </ul>
         </nav>
     </header>
@@ -69,7 +221,7 @@
             <div class="hero">
                 <img src="foto1.jpg" alt="Trio Gacor" class="hero-img">
                 <div class="hero-text">
-                    <p>Selamat datang di basecamp digital kami. Kami adalah trio yang saling melengkapi dalam cerita, tawa, dan petualangan. Fikri dengan gaya tenangnya, Jey dengan energinya yang ceria, dan Nico yang selalu punya cara untuk bikin suasana jadi lebih hidup.</p>
+                    <p>Selamat datang di basecamp digital kami. Kami adalah trio yang saling melengkapi dalam cerita, tawa, dan petualangan. Fikri si logis, Jey si energi, dan Nico si penghidup suasana.</p>
                 </div>
             </div>
         </section>
@@ -77,47 +229,60 @@
         <section id="galeri">
             <h2 class="section-title">Memory Vault</h2>
             <div class="gallery-grid">
-                <div class="gallery-item"><img src="foto1.jpg" alt="Hangout"><div class="gallery-overlay"><p>Hangout di Bioskop 🎬</p></div></div>
-                <div class="gallery-item"><img src="foto2.jpg" alt="Pose Santai"><div class="gallery-overlay"><p>Peace Sign ✌️</p></div></div>
-                <div class="gallery-item"><img src="foto3.jpg" alt="Mirror 1"><div class="gallery-overlay"><p>Mirror Selfie Estetik ✨</p></div></div>
-                <div class="gallery-item"><img src="foto4.jpg" alt="Mirror 2"><div class="gallery-overlay"><p>Mode Random On 🤪</p></div></div>
+                <div class="gallery-item"><img src="foto1.jpg" alt="Hangout"><p>Nonton Bareng 🎬</p></div>
+                <div class="gallery-item"><img src="foto2.jpg" alt="Pose"><p>Peace Sign ✌️</p></div>
+                <div class="gallery-item"><img src="foto3.jpg" alt="Mirror"><p>Mirror Selfie ✨</p></div>
+                <div class="gallery-item"><img src="foto4.jpg" alt="Random"><p>Random Mode 🤪</p></div>
             </div>
         </section>
 
         <section id="profil">
-            <h2 class="section-title">EL PLENGER?!</h2>
+            <center><h2 class="section-title">EL PLENGER</h2></center>
             <div class="profile-container">
                 
                 <div class="card">
-                    <a href="fikri.html" class="profile-link" title="Klik untuk lihat detail Fikri">
+                    <a href="fikri.html">
                         <img src="foto5.jpg" alt="Fikri">
                     </a>
-                    <h3>Fikri</h3>
+                    <br>
                     <span class="tag fikri">Si Paling Kalem</span>
-                    <p>Tempat curhat nomor satu.
-                    Klik fotonya untuk melihat profil lengkap Fikri.</p>
+                    <h3>Fikri</h3>
+                    <p>Tempat curhat nomor satu. Klik fotonya untuk detail.</p>
                 </div>
 
                 <div class="card">
-                    <a href="jey.html" class="profile-link" title="Klik untuk lihat detail Jey">
+                    <a href="jey.html">
                         <img src="foto6.jpg" alt="Jey">
                     </a>
-                    <h3>Jey</h3>
+                    <br>
                     <span class="tag jey">Cewek Tangguh</span>
-                    <p>Satu-satunya cewek yang energinya nggak habis-habis. Klik fotonya untuk profil Jey.</p>
+                    <h3>Jey</h3>
+                    <p>Energinya nggak habis-habis. Klik fotonya untuk profil Jey.</p>
                 </div>
 
                 <div class="card">
-                    <a href="nico.html" class="profile-link" title="Klik untuk lihat detail Nico">
+                    <a href="nico.html">
                         <img src="foto7.jpg" alt="Nico">
                     </a>
-                    <h3>Nico</h3>
+                    <br>
                     <span class="tag nico">Si Abut</span>
-                    <p>Selalu ada bahan bercandaan. Klik fotonya untuk melihat seberapa gacor Nico.</p>
+                    <h3>Nico</h3>
+                    <p>Selalu punya bahan bercandaan. Klik untuk profil Nico.</p>
                 </div>
 
             </div>
         </section>
+
+        <section id="saluran">
+            <div class="wa-section">
+                <h2>Stay Connected!</h2>
+                <p>Ikuti keseruan harian kami dan update terbaru melalui saluran resmi kami.</p>
+                <a href="https://whatsapp.com/channel/0029VbC5cOvI1rcjW6g8iE3K" class="wa-btn" target="_blank">
+                    JOIN SALURAN WHATSAPP
+                </a>
+            </div>
+        </section>
+
     </main>
 
     <footer>
