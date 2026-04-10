@@ -5,31 +5,165 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neural Profile | Fikri</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body { background-color: #020617; color: #f8fafc; min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 4rem 1rem; }
+        /* Menggunakan font Poppins yang tebal atau Space Grotesk untuk kesan lebih brutalist */
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Poppins:wght@400;600;800&display=swap');
         
-        .profile-container { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 30px; width: 100%; max-width: 600px; padding: 3rem; backdrop-filter: blur(20px); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); position: relative; overflow: hidden; }
-        .profile-container::before { content: ""; position: absolute; top: 0; right: 0; width: 100px; height: 100px; background: linear-gradient(135deg, transparent 50%, rgba(56, 189, 248, 0.1) 50%); }
-
-        .photo-frame { width: 180px; height: 180px; margin: 0 auto 2rem; position: relative; }
-        .photo-frame img { width: 100%; height: 100%; border-radius: 24px; object-fit: cover; border: 2px solid #38bdf8; box-shadow: 0 0 30px rgba(56, 189, 248, 0.2); }
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: 'Space Grotesk', 'Poppins', sans-serif; 
+        }
         
-        h1 { font-size: 2.5rem; font-weight: 800; text-align: center; margin-bottom: 0.5rem; color: #38bdf8; letter-spacing: -1px; }
-        .status { text-align: center; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: #94a3b8; margin-bottom: 2rem; }
+        body { 
+            background-color: #B2A4FF; /* Warna background ungu pastel cerah */
+            color: #000000; 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            padding: 4rem 1rem; 
+        }
+        
+        .profile-container { 
+            background: #ffffff; 
+            border: 4px solid #000000; /* Border hitam tebal */
+            border-radius: 16px; 
+            width: 100%; 
+            max-width: 600px; 
+            padding: 3rem; 
+            /* Hard shadow khas neobrutalism */
+            box-shadow: 12px 12px 0px #000000; 
+            position: relative; 
+        }
 
-        .bio-section { background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 16px; margin-bottom: 2rem; border-left: 4px solid #38bdf8; }
-        .bio-section p { font-size: 0.95rem; line-height: 1.8; color: #cbd5e1; }
+        .photo-frame { 
+            width: 160px; 
+            height: 160px; 
+            margin: 0 auto 2rem; 
+            position: relative; 
+        }
+        
+        .photo-frame img { 
+            width: 100%; 
+            height: 100%; 
+            border-radius: 16px; 
+            object-fit: cover; 
+            border: 4px solid #000000; 
+            box-shadow: 8px 8px 0px #000000; 
+        }
+        
+        h1 { 
+            font-size: 3rem; 
+            font-weight: 800; 
+            text-align: center; 
+            margin-bottom: 0.5rem; 
+            color: #000000; 
+            text-transform: uppercase;
+            letter-spacing: -2px; 
+        }
+        
+        .status-container {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
 
-        /* Stats Section - Unik & Tidak Monoton */
-        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 3rem; }
-        .stat-box { background: rgba(255,255,255,0.03); padding: 1rem; border-radius: 12px; text-align: center; border: 1px solid rgba(255,255,255,0.05); }
-        .stat-value { display: block; font-size: 1.2rem; font-weight: 800; color: #f8fafc; }
-        .stat-label { font-size: 0.7rem; color: #64748b; text-transform: uppercase; }
+        .status { 
+            display: inline-block;
+            background: #FFDE59; /* Kuning terang */
+            padding: 5px 15px;
+            font-size: 0.9rem; 
+            font-weight: 700;
+            text-transform: uppercase; 
+            color: #000000; 
+            border: 3px solid #000000;
+            box-shadow: 4px 4px 0px #000000;
+            border-radius: 30px;
+        }
 
-        .footer-nav { margin-top: auto; padding-top: 4rem; width: 100%; text-align: center; }
-        .btn-basecamp { text-decoration: none; color: #94a3b8; font-size: 0.9rem; font-weight: 600; transition: 0.3s; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.1); border-radius: 50px; }
-        .btn-basecamp:hover { color: #38bdf8; border-color: #38bdf8; background: rgba(56, 189, 248, 0.05); }
+        .bio-section { 
+            background: #FF90E8; /* Pink brutalist */
+            padding: 1.5rem; 
+            border-radius: 12px; 
+            margin-bottom: 2.5rem; 
+            border: 4px solid #000000; 
+            box-shadow: 8px 8px 0px #000000;
+        }
+        
+        .bio-section p { 
+            font-size: 1rem; 
+            font-weight: 600;
+            line-height: 1.6; 
+            color: #000000; 
+        }
+
+        /* Stats Section - Berwarna-warni dan kotak-kotak keras */
+        .stats-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 1.5rem; 
+            margin-bottom: 3rem; 
+        }
+        
+        .stat-box { 
+            padding: 1.2rem; 
+            border-radius: 12px; 
+            text-align: center; 
+            border: 4px solid #000000; 
+            box-shadow: 6px 6px 0px #000000;
+        }
+
+        /* Memberikan warna berbeda untuk tiap box stats */
+        .stat-box:nth-child(1) { background: #5CE1E6; } /* Cyan */
+        .stat-box:nth-child(2) { background: #7ED957; } /* Hijau */
+        .stat-box:nth-child(3) { background: #FF914D; } /* Oranye */
+        .stat-box:nth-child(4) { background: #ffffff; } /* Putih */
+
+        .stat-value { 
+            display: block; 
+            font-size: 1.5rem; 
+            font-weight: 800; 
+            color: #000000; 
+            margin-bottom: 5px;
+        }
+        
+        .stat-label { 
+            font-size: 0.8rem; 
+            font-weight: 700;
+            color: #000000; 
+            text-transform: uppercase; 
+            border-top: 2px solid #000000;
+            padding-top: 5px;
+            display: block;
+        }
+
+        .footer-nav { 
+            margin-top: auto; 
+            padding-top: 2rem; 
+            width: 100%; 
+            text-align: center; 
+        }
+        
+        .btn-basecamp { 
+            display: inline-block;
+            text-decoration: none; 
+            color: #000000; 
+            background: #ffffff;
+            font-size: 1rem; 
+            font-weight: 700; 
+            padding: 12px 24px; 
+            border: 4px solid #000000; 
+            border-radius: 50px; 
+            box-shadow: 6px 6px 0px #000000;
+            transition: all 0.2s ease-in-out; 
+        }
+        
+        /* Efek ditekan pada neobrutalism saat kursor diarahkan */
+        .btn-basecamp:hover { 
+            transform: translate(4px, 4px); 
+            box-shadow: 2px 2px 0px #000000; 
+            background: #FFDE59;
+        }
     </style>
 </head>
 <body>
@@ -39,7 +173,9 @@
             <img src="foto5.jpg" alt="Fikri">
         </div>
         <h1>FIKRI</h1>
-        <div class="status">The Strategist • Analyzer</div>
+        <div class="status-container">
+            <div class="status">The Strategist • Analyzer</div>
+        </div>
         
         <div class="bio-section">
             <p>Pilar logika dalam Trio Gacor. Fikri adalah tipe orang yang lebih suka mengamati keadaan sebelum bertindak. Jika ada masalah teknis atau rencana jalan-jalan yang berantakan, dia adalah orang pertama yang merapikan semuanya dengan tenang.</p>
